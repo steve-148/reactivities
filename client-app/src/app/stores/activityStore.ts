@@ -1,11 +1,14 @@
-import { makeObservable, observable } from "mobx";
+import { makeAutoObservable } from "mobx";
 
 export default class ActivityStore {
-  title ='Hello from MobX!';
+  title = "Hello from MobX!";
 
-  constructor(){
-    makeObservable(this, {
-      title: observable
-    })
+  constructor() {
+    makeAutoObservable(this);
   }
+
+  // by using an arrow function we don't have to bind the action in the constructor
+  setTitle = () => {
+    this.title = this.title + "!";
+  };
 }

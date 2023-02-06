@@ -1,4 +1,5 @@
 using API.Extensions;
+using API.Middleware;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
 
@@ -11,10 +12,12 @@ builder.Services.AddApplicationServices(builder.Configuration);
 // Configure the HTTP request pipeline
 var app = builder.Build();
 
-if (builder.Environment.IsDevelopment())
+app.UseMiddleware<ExceptionMiddleware>();
+
+if (app.Environment.IsDevelopment())
 {
   app.UseSwagger();
-  app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WebAPIv5 v1"));
+  app.UseSwaggerUI();
 }
 
 app.UseCors("CorsPolicy");

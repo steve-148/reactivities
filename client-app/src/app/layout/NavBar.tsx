@@ -2,26 +2,17 @@ import { NavLink } from "react-router-dom";
 import { Button, Container, Menu } from "semantic-ui-react";
 
 export default function NavBar(): JSX.Element {
- 
   return (
     <Menu inverted fixed="top">
       <Container>
         <Menu.Item as={NavLink} end to="/" header>
-          <img
-            src="/assets/logo.png"
-            alt="logo"
-            style={{ marginRight: "20px" }}
-          />
+          <img src="/assets/logo.png" alt="logo" style={{ marginRight: "20px" }} />
           Reactivities
         </Menu.Item>
         <Menu.Item as={NavLink} to="activities" name="Activities" />
+        <Menu.Item as={NavLink} to="errors" name="Errors" />
         <Menu.Item>
-          <Button
-            as={NavLink}
-            to="createActivity"
-            positive
-            content="Create Activity"
-          />
+          <Button as={NavLink} to="createActivity" positive content="Create Activity" />
         </Menu.Item>
       </Container>
     </Menu>
